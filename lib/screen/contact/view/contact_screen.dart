@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:login_app/utils/provider/provider.dart';
+import 'package:provider/provider.dart';
 
 class ConatactScreen extends StatefulWidget {
   const ConatactScreen({super.key});
@@ -64,13 +66,19 @@ class _ConatactScreenState extends State<ConatactScreen> {
               ),
             ),
             Center(
-              child: ElevatedButton(onPressed: () {}, child: const Text("Submit")),
+              child: ElevatedButton(
+                onPressed: () {
+                  String? email = txtEmail.text;
+                },
+                child: const Text("Submit"),
+              ),
             ),
             Center(
-              child:
-                  ElevatedButton(onPressed: () {
+              child: ElevatedButton(
+                  onPressed: () {
                     Navigator.pushNamed(context, "create");
-                  }, child: const Text("New Account")),
+                  },
+                  child: const Text("New Account")),
             )
           ],
         ),

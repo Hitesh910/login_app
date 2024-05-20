@@ -14,7 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
           // title: Text("Login"),
           ),
-      body: Column(
+      body: const Column(
         children: [
           Center(
             child: Text(
