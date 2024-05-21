@@ -26,6 +26,23 @@ class SharedHelper
   async {
     SharedPreferences share = await SharedPreferences.getInstance();
     String? vPass = share.getString('pass');
+    print(vPass);
     return vPass;
+  }
+
+  setCheck(bool check)
+  async
+  {
+    SharedPreferences share = await SharedPreferences.getInstance();
+    share.setBool("check", check);
+  }
+
+  getCheck()
+  async
+  {
+    SharedPreferences share = await SharedPreferences.getInstance();
+    bool? vCheck = share.getBool('check');
+    print(vCheck);
+    return vCheck;
   }
 }

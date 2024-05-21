@@ -7,6 +7,7 @@ class Login with ChangeNotifier
   SharedHelper share = SharedHelper();
   String? email;
   String? pass;
+  bool? check;
 
   void saveData(String email)
   {
@@ -29,6 +30,17 @@ class Login with ChangeNotifier
   async
   {
     pass = await share.getPass();
+    notifyListeners();
+  }
+
+  void setCheck(bool check) {
+    share.setCheck(check);
+  }
+
+  void getCheck()
+   async
+   {
+    check = await share.getCheck();
     notifyListeners();
   }
 }

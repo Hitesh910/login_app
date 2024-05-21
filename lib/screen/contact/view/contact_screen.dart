@@ -40,11 +40,12 @@ class _ConatactScreenState extends State<ConatactScreen> {
               margin: const EdgeInsets.all(8),
               child: TextFormField(
                 decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    label: Text(
-                      "Enter Email",
-                      style: TextStyle(color: Colors.grey.withOpacity(0.8)),
-                    )),
+                  border: const OutlineInputBorder(),
+                  label: Text(
+                    "Enter Email",
+                    style: TextStyle(color: Colors.grey.withOpacity(0.8)),
+                  ),
+                ),
                 controller: txtEmail,
               ),
             ),
@@ -56,11 +57,14 @@ class _ConatactScreenState extends State<ConatactScreen> {
               height: 50,
               margin: const EdgeInsets.all(8),
               child: TextFormField(
+                controller: txtPass,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
                   label: Text(
                     "Enter Password",
-                    style: TextStyle(color: Colors.grey.withOpacity(0.8)),
+                    style: TextStyle(
+                      color: Colors.grey.withOpacity(0.8),
+                    ),
                   ),
                 ),
               ),
@@ -69,16 +73,38 @@ class _ConatactScreenState extends State<ConatactScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   String? email = txtEmail.text;
+                  String? pass = txtPass.text;
+                  print(email);
+                  print(pass);
+
+                  context.read<Login>().getPass();
+                  context.read<Login>().getData();
+
+                  if (email == context.read<Login>().email && pass == context.read<Login>().pass)
+                  {
+                    context.read<Login>().setCheck(true);
+                    Navigator.pushNamed(context, 'home');
+                    print(context.read<Login>().check);
+                  }
+                  else
+                  {
+                    context.read<Login>().setCheck(false);
+                    var Snk = const SnackBar(content: Text("Please Enter valid Id or Password"),
+                      backgroundColor: Colors.red,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(Snk);
+                  }
                 },
                 child: const Text("Submit"),
               ),
             ),
             Center(
               child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, "create");
-                  },
-                  child: const Text("New Account")),
+                onPressed: () {
+                  Navigator.pushNamed(context, "create");
+                },
+                child: const Text("New Account"),
+              ),
             )
           ],
         ),

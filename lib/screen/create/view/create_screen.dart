@@ -125,6 +125,8 @@ class _CreateScreenState extends State<CreateScreen> {
                         String? pass = txtPass.text;
                         context.read<Login>().saveData(email);
                         context.read<Login>().savePass(pass);
+                        // context.read<Login>().getData();
+                        // context.read<Login>().getPass();
 
                         Navigator.pop(context);
                       }
